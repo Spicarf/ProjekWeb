@@ -1,0 +1,101 @@
+:root {
+    --primary: #4CAF50;
+    --secondary: #FFA500;
+    --bg: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    outline: none;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: var(--bg);
+    color: #000000;
+}
+
+/* Navbar Start */
+.navbar {
+    display: flex;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: #000000;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 999;
+}
+.navbar .navbar-logo {
+    display: flex;
+    padding: 15px 0px;
+    align-items: center;
+    gap: 0px 10px;
+}
+.navbar .navbar-logo img {
+    width: 70px;
+    border-radius: 1rem;
+}
+.navbar .navbar-logo p {
+    font-size: 30px;
+    font-weight: 900;
+    color: var(--primary);
+}
+.navbar .navbar-logo p span{
+    color: var(--secondary);
+}
+.navbar .navbar-nav {
+    /* display: flex; */
+    /* align-items: center; */
+    position: absolute;
+    top: 100%;
+    left: -100%;
+    background-color: var(--bg);
+    border-right: 2px solid black;
+    width: 350px;
+    height: 100vh;
+    transition: 0.3s;
+}
+.navbar .navbar-nav.active {
+    left: 0%;
+}
+.navbar .navbar-nav a {
+    display: flex;
+    align-items: center;
+    font-size: 15px;
+    font-weight: bold;
+    color: #000000;
+    gap: 0 5px;
+    margin: 24px;
+    padding: 8px;
+}
+.navbar .navbar-nav a:hover {
+    color: var(--primary);
+}
+.navbar .akun {
+    font-size: 15px;
+    font-weight: bold;
+    text-align: center;
+    width: 70px;
+    background-color: var(--bg);
+    color: #000000;
+    border-radius: 1rem;
+    margin-right: 40px;
+    padding: 10px;
+}
+.navbar .akun:hover {
+    background-color: var(--primary);
+    color: var(--bg);
+}
+.navbar #hamburger-menu {
+    color: var(--bg);
+    margin-left: 40px
+}
+.navbar #hamburger-menu:hover {
+    color: var(--primary);
+}
+/* Navbar End */
