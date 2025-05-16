@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,9 +36,26 @@
             <a href="#"><i data-feather="phone"></i>Kontak</a>
         </div>
 
-        <a href="#" class="akun">Login</a>
+        <?php if(!isset($_SESSION['user'])) { ?>
+            <a href="php/login.php" class="akun">Login</a>
+        <?php } else { ?>
+            <a href="php/profile.php" class="akun-login">
+                <img src="images/profile.jpg" alt="foto">
+                <p><?php echo $_SESSION['user']['username'] ?></p>
+            </a>
+        <?php }  ?>
     </nav>
     <!-- Navbar End -->
+
+    <!-- Hero Section Start -->
+    <section class="hero">
+        <main class="content">
+            <h1>Mari Beli Sayur dan Buah Disini!</h1>
+            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim nulla mollitia delectus aliquid? Voluptatum non voluptate, repudiandae porro error ipsam repellat delectus architecto. Odio tempora in illum? Officia, sunt a?</p>
+            <a href="#" class="cta">Beli Sekarang</a>
+        </main>
+    </section>
+    <!-- Hero Section End -->
 
     <!-- Icons -->
     <script>
