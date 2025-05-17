@@ -5,7 +5,10 @@ $conn = getConnection();
 
 $sql = "SELECT * FROM produk";
 $statement = $conn -> prepare($sql);
-$statement -> execute()
+$statement -> execute();
+$produk = $statement->fetchAll();
+$conn = null;
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -55,36 +58,17 @@ $statement -> execute()
 
     <!-- Section Produk Start -->
     <section class="produk">
-        <div class="content">
-            <img src="../images/profile.jpg" alt="foto-produk">
-            <p class="nama-produk">Wortel</p>
-            <p class="harga">Rp.5000</p>
-        </div>
-        <div class="content">
-            <img src="../images/profile.jpg" alt="foto-produk">
-            <p class="nama-produk">Wortel</p>
-            <p class="harga">Rp.5000</p>
-        </div>
-        <div class="content">
-            <img src="../images/profile.jpg" alt="foto-produk">
-            <p class="nama-produk">Wortel</p>
-            <p class="harga">Rp.5000</p>
-        </div>
-        <div class="content">
-            <img src="../images/profile.jpg" alt="foto-produk">
-            <p class="nama-produk">Wortel</p>
-            <p class="harga">Rp.5000</p>
-        </div>
-        <div class="content">
-            <img src="../images/profile.jpg" alt="foto-produk">
-            <p class="nama-produk">Wortel</p>
-            <p class="harga">Rp.5000</p>
-        </div>
-        <div class="content">
-            <img src="../images/main.jpg" alt="foto-produk">
-            <p class="nama-produk">Wortel</p>
-            <p class="harga">Rp.5000</p>
-        </div>
+        <?php if(count($produk) > 0) { ?>
+            <?php foreach($produk as $row) { ?>
+                <div class="content">
+                    <img src="../images/produk/<?php echo $row['foto'] ?>" alt="foto-produk">
+                    <p class="nama-produk"><?php echo $row['nama_produk'] ?></p>
+                    <p class="harga">Rp.<?php echo $row['harga_produk'] ?></p>
+                </div>
+            <?php } ?>
+        <?php } else { ?>
+            <p>Belum ada produk yang ditambahkan</p>
+        <?php } ?>
     </section>
     <!-- Section Produk End -->
 

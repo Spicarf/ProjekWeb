@@ -26,7 +26,8 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background-color: rgba(37, 95, 56, 0.9);
+    background-color: rgba(37, 95, 56, 0.8);
+    backdrop-filter: blur(20px);
     border-bottom: 2px solid black;
     justify-content: space-between;
     align-items: center;
