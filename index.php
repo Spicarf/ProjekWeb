@@ -57,6 +57,50 @@ session_start();
     </section>
     <!-- Hero Section End -->
 
+    <!-- Why Section start-->
+    <section id="why" class="why">
+        <h2>Why <span class="logo1">Sayur</span><span class="logo2">in</span>?</h2>
+        <div class = "row">
+            <div class="why-card">
+                <img src="images/freshPicked.jpg" >
+                <h3 class = "why-card-tagline"> Freshly Picked </h3>
+                <p class = "why-card-caption">Nikmati sayur dan buah segar pilihan yang langsung dikirim dari petani lokal. Tanpa transit panjang, tanpa lama-lama di gudang</p>
+            </div>
+            <div class="why-card">
+                <img src="images/option.jpg" >
+                <h3 class = "why-card-tagline"> Flexible Options </h3>
+                <p class = "why-card-caption">Beli satuan, paketan hemat, atau langsung pilih menu siap masak. Cocok buat segala gaya hidup, dari anak kos sampai keluarga sibuk</p>
+            </div>
+            <div class="why-card">
+                <img src="images/pickup.jpg" >
+                <h3 class = "why-card-tagline"> Fast & Simple </h3>
+                <p class = "why-card-caption">Belanja sayur gak perlu keluar rumah. Tinggal order lewat website, kirim di hari yang sama, dan bisa atur jadwal sesuai kebutuhanmu</p>
+            </div>
+        </div>
+    </section>
+    <!-- Why Section end -->
+
+    <!-- About Section Start -->
+    <section class = "about">
+        <div class="row">
+            <div class="about-image">
+                <img src="images/box.jpg" alt="">
+            </div>
+            <div class="content">
+                <div>
+                    <h1>Ngintip yuk, ada apa aja di dalam box HelloFresh?</h1>
+                    <p><span>Sayur & buah segar berkualitas tinggi: </span>Langsung dari petani lokal, dipilih yang terbaik dan masih super fresh.</p>
+                    <p><span>Kemasan food-grade & rapi: </span>Dikemas dalam box kokoh yang menjaga kesegaran, aman selama pengiriman..</p>
+                    <p><span>Pelindung ekstra di dalam box: </span>Ada pelapis atau kantong pelindung supaya sayur & buah tetap utuh dan tidak rusak.</p>
+                    <p><span>Dikirim langsung ke depan pintu rumahmu: </span>Tanpa ribet ke pasar, tinggal duduk manis dan tunggu box datang.</p>
+                    <p><span>Cocok buat stok masakan harian: </span>Isi box cukup untuk kebutuhan beberapa hari, pas buat keluarga kecil atau anak kos.</p>
+                    <p><span>Label & info isi yang jelas: </span>Setiap item dilabeli, jadi kamu tahu apa saja yang kamu terima.</p>
+                </div>
+            </div>
+        </div>
+
+    </section>
+    <!-- About Section End -->
     <!-- Icons -->
     <script>
       feather.replace();

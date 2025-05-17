@@ -16,7 +16,7 @@ body {
     font-family: "Open Sans", sans-serif;
     background-color: var(--bg);
     color: #000000;
-    height: 3000px;
+    /* height: 3000px; */
 }
 
 /* Navbar Start */
@@ -171,3 +171,97 @@ body {
     background-color: var(--primary);
 }
 /* Hero Section End */
+
+/* Why Section Start */
+.why{
+    padding: 4rem 7% 1.4rem;
+}
+.why h2{
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+}
+.why .logo1{
+    color: var(--primary);
+}
+.why .logo2{
+    color: var(--secondary);
+}
+
+.why h2{
+    text-align: center;
+    font-size: 2.6rem;
+    margin-bottom: 3rem;
+    justify-content: center;
+}
+.why .logo1{
+    color: var(--primary);
+}
+.why .logo2{
+    color: var(--secondary);
+}
+.why .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+}
+.why .row .why-card{
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    text-align: center;
+}
+.why .row .why-card img{
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    padding-bottom: 10px;
+}
+.why .row .why-card p{
+    color: black;
+    padding-top: 5px;
+}
+/* Why Section End */
+
+/* About Section Start */
+.about{
+    padding: 4rem 7% 1.4rem;
+    padding-left: 50px;
+}
+.about .row{
+    display: flex;
+}
+.about-image{
+    width: 50%;
+}
+.about-image img{
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+}
+.about .content{
+    display: flex;
+    justify-content: center;
+}
+.about .content div{
+    width: 75%;
+}
+.about .content h1{
+    padding-bottom: 15px;
+}
+.about .content p span{
+    font-weight: bold;
+}
+.about .content p{
+    color: black;
+    padding-bottom: 28px;
+}
+
+
+
+
+
+
+/* About Section End*/
