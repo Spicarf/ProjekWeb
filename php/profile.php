@@ -40,7 +40,6 @@ $user = $_SESSION['user'];
         <h2>Welcome, <?= htmlspecialchars($user['nama']) ?></h2>
         <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
         <p><strong>Username:</strong> <?= htmlspecialchars($user['username']) ?></p>
-        <p><strong>Password:</strong> <?= htmlspecialchars(MD5($user['password'])) ?></p>
     </div>
   </section>
   <!-- Section Profile End -->
@@ -49,8 +48,5 @@ $user = $_SESSION['user'];
   <script>
     feather.replace();
   </script>
-
-  <!-- My Script -->
-  <script src="js/script.js"></script>
 </body>
 </html>

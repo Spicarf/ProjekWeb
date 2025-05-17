@@ -13,6 +13,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $user = $statement->fetch();
   if ($user) {
+      if($user["username"] == "admin" && $user["email"] == "adminsayurin@gmail.com") {
+        $_SESSION["user"] = $user;
+        echo "<script>alert('Selamat Datang Admin'); window.location.href = 'admin.php';</script>";
+        exit();
+      }
       $_SESSION["user"] = $user;
       echo "<script>alert('Berhasil Login'); window.location.href = '../index.php';</script>";
       exit();
@@ -65,8 +70,5 @@ $conn = null;
   <script>
     feather.replace();
   </script>
-
-  <!-- My Script -->
-  <script src="js/script.js"></script>
 </body>
 </html>

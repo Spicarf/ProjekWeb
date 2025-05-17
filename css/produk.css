@@ -97,7 +97,7 @@ body {
     font-weight: bold;
 }
 .navbar .akun-login p {
-    color: #000000;
+    color: var(--bg);
 }
 .navbar .akun-login img {
     width: 35px;
@@ -116,58 +116,49 @@ body {
 }
 /* Navbar End */
 
-/* Hero Section Start */
-.hero {
-    min-height: 100vh;
+/* Section Produk Start */
+.produk {
     display: flex;
-    align-items: center;
-    background-image: url("../images/main.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
-    position: relative;
-}
-.hero::after {
-    content: "";
-    display: block;
-    position: absolute;
-    width: 100%;
-    height: 25%;
-    bottom: 0;
-    background: linear-gradient(0deg, rgba(255, 245, 228, 1) 3%, rgba(255,255,255,0) 55%);
-}
-.hero .content {
-    padding: 1.4rem 7%;
-    max-width: 600px;
-}
-.hero .content h1, p {
-    color: var(--bg);
-}
-.hero .content h1 {
-    font-size: 45px;
-    text-shadow: 1px 1px 3px rgba(255, 245, 228, 0.5);
-    line-height: 1.2;
-}
-.hero .content p {
-    font-size: 20px;
-    margin-top: 10px;
-    line-height: 1.4;
-    font-weight: 100;
-    text-shadow: 1px 1px 3px rgba(255, 245, 228, 0.5);
-}
-.hero .content .cta {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 120px 20px 40px; /* padding atas disesuaikan agar tidak tertutup navbar */
+    gap: 20px;
     background-color: var(--bg);
-    display: inline-block;
-    padding: 15px 20px;
-    margin-top: 20px;
+}
+
+.produk .content {
+    background-color: #ffffff;
+    border: 2px solid var(--primary);
     border-radius: 1rem;
-    font-size: 20px;
-    color: #000000;
-    font-weight: 700;
-    box-shadow: 1px 1px 3px rgba(255, 245, 228, 0.5);
+    width: 200px;
+    height: 300px;
+    padding: 16px;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
-.hero .content .cta:hover {
-    color: var(--bg);
-    background-color: var(--primary);
+
+.produk .content:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
-/* Hero Section End */
+
+.produk .content img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+    margin-bottom: 10px;
+}
+
+.produk .nama-produk {
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 5px;
+}
+
+.produk .harga {
+    color: var(--secondary);
+    font-weight: bold;
+    font-size: 15px;
+}
+/* Section Produk End */

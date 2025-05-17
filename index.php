@@ -17,21 +17,21 @@ session_start();
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
 </head>
 <body>
     <!-- Navbar Start -->
     <nav class="navbar">
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
 
-        <a href="#" class="navbar-logo">
+        <a href="index.php" class="navbar-logo">
             <img src="images/logo.png" alt="logo">
             <p>Sayur<span>in</span></p>
         </a>
 
         <div class="navbar-nav">   
-            <a href="#"><i data-feather="home"></i>Home</a>
-            <a href="#"><i data-feather="shopping-cart"></i>Produk</a>
+            <a href="index.php"><i data-feather="home"></i>Home</a>
+            <a href="php/produk.php"><i data-feather="shopping-cart"></i>Produk</a>
             <a href="#"><i data-feather="users"></i>Tentang Kami</a>
             <a href="#"><i data-feather="phone"></i>Kontak</a>
         </div>
@@ -52,7 +52,7 @@ session_start();
         <main class="content">
             <h1>Mari Beli Sayur dan Buah Disini!</h1>
             <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim nulla mollitia delectus aliquid? Voluptatum non voluptate, repudiandae porro error ipsam repellat delectus architecto. Odio tempora in illum? Officia, sunt a?</p>
-            <a href="#" class="cta">Beli Sekarang</a>
+            <a href="php/produk.php" class="cta">Beli Sekarang</a>
         </main>
     </section>
     <!-- Hero Section End -->

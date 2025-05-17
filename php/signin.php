@@ -73,8 +73,5 @@ $conn = null;
   <script>
     feather.replace();
   </script>
-
-  <!-- My Script -->
-  <script src="js/script.js"></script>
 </body>
 </html>
