@@ -8,7 +8,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST") {
     $kategori_produk = $_POST["kategori"];
     $harga_produk = $_POST["harga"];
 
-    $name = $_FILES["foto"]["name"];
+    $name = uniqid() . '-' . basename($_FILES["foto"]["name"]);
     $tmp_name = $_FILES["foto"]["tmp_name"];
     move_uploaded_file($tmp_name, "../images/produk/" . $name);
 
@@ -48,8 +48,8 @@ $conn = null;
         </a>
 
         <div class="navbar-nav">   
-            <a href="#"><i data-feather="plus"></i>Tambah Produk</a>
-            <a href="#"><i data-feather="settings"></i>Kelola Produk</a>
+            <a href="admin.php"><i data-feather="plus"></i>Tambah Produk</a>
+            <a href="kelolaProduk.php"><i data-feather="settings"></i>Kelola Produk</a>
             <a href="#"><i data-feather="users"></i>Lihat Pelanggan</a>
         </div>
 

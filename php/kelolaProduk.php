@@ -15,7 +15,7 @@ $conn = null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produk</title>
+    <title>Kelola Produk</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -33,30 +33,25 @@ $conn = null;
     <nav class="navbar">
         <a href="#" id="hamburger-menu"><i data-feather="menu"></i></a>
 
-        <a href="../index.php" class="navbar-logo">
+        <a href="admin.php" class="navbar-logo">
             <img src="../images/logo.png" alt="logo">
             <p>Sayur<span>in</span></p>
         </a>
 
         <div class="navbar-nav">   
-            <a href="../index.php"><i data-feather="home"></i>Home</a>
-            <a href="#"><i data-feather="shopping-cart"></i>Produk</a>
-            <a href="#"><i data-feather="users"></i>Tentang Kami</a>
-            <a href="#"><i data-feather="phone"></i>Kontak</a>
+            <a href="admin.php"><i data-feather="plus"></i>Tambah Produk</a>
+            <a href="kelolaProduk.php"><i data-feather="settings"></i>Kelola Produk</a>
+            <a href="#"><i data-feather="users"></i>Lihat Pelanggan</a>
         </div>
 
         <?php if(!isset($_SESSION['user'])) { ?>
             <a href="login.php" class="akun">Login</a>
         <?php } else { ?>
-            <a href="profile.php" class="akun-login">
-                <?php if(!isset($_SESSION['user']['profile'])) { ?>
-                    <img src="../images/profile.jpg" alt="foto">
-                <?php } else { ?>
-                    <img src="../images/profile/<?= htmlspecialchars($_SESSION['user']['profile']) ?>" alt="foto">
-                <?php } ?>
+            <a href="logout.php" class="akun-login">
+                <img src="../images/profile.jpg" alt="foto">
                 <p><?php echo $_SESSION['user']['username'] ?></p>
             </a>
-        <?php } ?>
+        <?php }  ?>
     </nav>
     <!-- Navbar End -->
 
@@ -68,8 +63,8 @@ $conn = null;
                     <img src="../images/produk/<?php echo $row['foto'] ?>" alt="foto-produk">
                     <p class="nama-produk"><?php echo $row['nama_produk'] ?></p>
                     <p class="harga">Rp.<?php echo $row['harga_produk'] ?></p>
-                    <a href="detailProduk.php?id=<?php echo $row['id_produk']; ?>" class="btn-edit">Detail Produk</a>
-                    <a href="beli.php?id=<?php echo $row['id_produk']; ?>">Beli</a>
+                    <a href="editProduk.php?id=<?php echo $row['id_produk']; ?>" class="btn-edit">Edit</a>
+                    <a href="hapusProduk.php?id=<?php echo $row['id_produk']; ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</a>
                 </div>
             <?php } ?>
         <?php } else { ?>

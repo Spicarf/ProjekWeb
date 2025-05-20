@@ -36,7 +36,7 @@ $user = $_SESSION['user'];
     </div>
     <!-- Menu End -->
 
-    <!-- My Profile Start -->
+    <!-- Riwayat Start -->
     <div class="content">
       <h2>Profil Saya</h2>
       <?php if(!isset($user['profile'])) { ?>
@@ -51,7 +51,7 @@ $user = $_SESSION['user'];
       <a href="logout.php" class="btn-logout">Logout</a>
       <a href="../index.php" class="btn-home">Beranda</a>
     </div>
-    <!-- My Profile End -->
+    <!-- Riwayat End -->
   </div>
 
   <!-- Icons -->

@@ -1,0 +1,176 @@
+:root {
+    --primary: #4CAF50;
+    --secondary: #FFA725;
+    --bg: #fff5e4;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Open Sans", sans-serif;
+    background-color: var(--bg);
+    color: #000000;
+}
+
+/* My Profile Start */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
+.menu {
+    position: sticky;
+    top: 0;
+    width: 220px;
+    height: 100vh;
+    background-color: var(--primary);
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+}
+.menu h3 {
+    color: #000;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.menu a {
+    display: block;
+    color: #000;
+    text-align: center;
+    background-color: var(--bg);
+    padding: 10px 15px;
+    margin-bottom: 10px;
+    border-radius: 6px;
+    transition: background-color 0.3s ease;
+}
+.menu a:hover {
+    background-color: var(--secondary);
+    color: #000;
+}
+.content {
+    flex: 1;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.content h2 {
+    margin-bottom: 20px;
+    color: var(--primary);
+}
+.profile-photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+.content p {
+    margin-bottom: 12px;
+    font-size: 16px;
+}
+.btn-logout,
+.btn-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+    text-align: center;
+}
+.btn-logout {
+    background-color: #e74c3c;
+    margin-right: 10px;
+}
+.btn-home {
+    background-color: #3498db;
+}
+.btn-logout:hover {
+    background-color: #c0392b;
+}
+.btn-home:hover {
+    background-color: #2980b9;
+}
+/* My Profile End */
+
+/* Edit Profile Start */
+.edit-profile-container {
+    flex: 1;
+    padding: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    margin: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+.edit-profile-container h2 {
+    margin-bottom: 30px;
+    color: var(--primary);
+    font-size: 24px;
+}
+.edit-profile-container form label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+}
+.edit-profile-container form input[type="text"],
+.edit-profile-container form input[type="email"],
+.edit-profile-container form input[type="file"] {
+    width: 100%;
+    padding: 10px 14px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 14px;
+}
+.edit-profile-container img {
+    border-radius: 8px;
+}
+.edit-profile-container button[type="submit"] {
+    background-color: var(--primary);
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+.edit-profile-container button[type="submit"]:hover {
+    background-color: #388e3c;
+}
+.edit-profile-container .batal-btn {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 10px 20px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 6px;
+    text-align: center;
+    transition: background-color 0.3s ease;
+}
+.edit-profile-container .batal-btn:hover {
+    background-color: #c0392b;
+}
+.hapus-foto-btn {
+    background-color: #f39c12;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.hapus-foto-btn:hover {
+    background-color: #d68910;
+}
+/* Edit Profile End */

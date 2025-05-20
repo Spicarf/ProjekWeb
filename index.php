@@ -17,7 +17,7 @@ session_start();
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style1.css">
 </head>
 <body>
     <!-- Navbar Start -->
@@ -40,10 +40,14 @@ session_start();
             <a href="php/login.php" class="akun">Login</a>
         <?php } else { ?>
             <a href="php/profile.php" class="akun-login">
-                <img src="images/profile.jpg" alt="foto">
+                <?php if(!isset($_SESSION['user']['profile'])) { ?>
+                    <img src="images/profile.jpg" alt="foto">
+                <?php } else { ?>
+                    <img src="images/profile/<?= htmlspecialchars($_SESSION['user']['profile']) ?>" alt="foto">
+                <?php } ?>
                 <p><?php echo $_SESSION['user']['username'] ?></p>
             </a>
-        <?php }  ?>
+        <?php } ?>
     </nav>
     <!-- Navbar End -->
 

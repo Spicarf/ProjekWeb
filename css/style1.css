@@ -16,7 +16,7 @@ body {
     font-family: "Open Sans", sans-serif;
     background-color: var(--bg);
     color: #000000;
-    height: 3000px;
+    /* height: 3000px; */
 }
 
 /* Navbar Start */
@@ -101,8 +101,10 @@ body {
     color: var(--bg);
 }
 .navbar .akun-login img {
-    width: 35px;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
+    object-fit: cover;
 }
 .navbar .akun:hover {
     background-color: var(--primary);
