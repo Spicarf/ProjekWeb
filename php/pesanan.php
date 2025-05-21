@@ -1,18 +1,34 @@
 <?php
 session_start();
+require_once __DIR__ . "/getConnection.php";
+$conn = getConnection();
+
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit();
 }
 $user = $_SESSION['user'];
+
+// Ambil data transaksi dan produk sekaligus
+$sql = "SELECT t.tanggal, t.id_produk, p.nama_produk, p.harga_produk AS harga_produk, p.foto
+        FROM transaksi t
+        JOIN produk p ON t.id_produk = p.id_produk
+        WHERE t.id_user = ?
+        ORDER BY t.tanggal DESC";
+$stmt = $conn->prepare($sql);
+$stmt->execute([$user['id_user']]);
+$riwayat = $stmt->fetchAll();
+
+$conn = null;
 ?>
+
 
 <!DOCTYPE html>
 <html lang="id">
 <head>
   <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+    <title>Riwayat Pesanan</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -23,7 +39,7 @@ $user = $_SESSION['user'];
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="../css/profile1.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
   <div class="container">
@@ -33,23 +49,31 @@ $user = $_SESSION['user'];
       <a href="profile.php">My Profile</a>
       <a href="pesanan.php">Riwayat Pesanan</a>
       <a href="editProfile.php">Edit Profile</a>
+      <a href="../index.php">Beranda</a>
+      <a href="logout.php">Logout</a>
     </div>
     <!-- Menu End -->
 
     <!-- Riwayat Start -->
     <div class="content">
-      <h2>Profil Saya</h2>
-      <?php if(!isset($user['profile'])) { ?>
-          <img src="../images/profile.jpg" alt="Foto Profil" class="profile-photo"/>
-      <?php } else { ?>
-          <img src="../images/profile/<?= htmlspecialchars($user['profile']) ?>" alt="Foto Profil" class="profile-photo"/>
-      <?php } ?>
-      <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($user['nama']) ?></p>
-      <p><strong>Username:</strong> <?= htmlspecialchars($user['username']) ?></p>
-      <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
-      
-      <a href="logout.php" class="btn-logout">Logout</a>
-      <a href="../index.php" class="btn-home">Beranda</a>
+        <h2>Riwayat Pesanan</h2>
+        <div class="pesanan">
+            <?php if (empty($riwayat)): ?>
+                <p>Tidak ada riwayat pesanan.</p>
+            <?php else: ?>
+                <?php foreach ($riwayat as $item): ?>
+                <div class="pesanan-item">
+                    <img src="../images/produk/<?= htmlspecialchars($item['foto']) ?>" alt="foto-produk">
+                    <div class="pesanan-info">
+                        <h1><?= htmlspecialchars($item['nama_produk']) ?></h1>
+                        <p>Rp<?= number_format($item['harga_produk'], 0, ',', '.') ?></p>
+                        <p><?= date("d-m-Y H:i", strtotime($item['tanggal'])) ?></p>
+                        <a href="komentar.php?id_produk=<?php echo $item['id_produk']; ?>">Beri Komentar</a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            <?php endif; ?>
+        </div>
     </div>
     <!-- Riwayat End -->
   </div>

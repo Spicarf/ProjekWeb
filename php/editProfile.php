@@ -96,7 +96,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="../css/profile1.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
     <div class="container">
@@ -106,6 +106,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="profile.php">My Profile</a>
             <a href="pesanan.php">Riwayat Pesanan</a>
             <a href="editProfile.php">Edit Profile</a>
+            <a href="../index.php">Beranda</a>
+            <a href="logout.php">Logout</a>
         </div>
         <!-- Menu End -->
 

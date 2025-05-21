@@ -13,19 +13,28 @@ if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "a
     exit();
 }
 
-$sql = "SELECT * FROM produk";
-$statement = $conn -> prepare($sql);
-$statement -> execute();
-$produk = $statement->fetchAll();
-$conn = null;
+if($_SERVER["REQUEST_METHOD"] == "POST") {
+    $nama_produk = $_POST["nama"];
+    $kategori_produk = $_POST["kategori"];
+    $harga_produk = $_POST["harga"];
 
+    $name = uniqid() . '-' . basename($_FILES["foto"]["name"]);
+    $tmp_name = $_FILES["foto"]["tmp_name"];
+    move_uploaded_file($tmp_name, "../images/produk/" . $name);
+
+    $sql = "INSERT INTO produk(nama_produk, harga_produk, foto, kategori) VALUES (?,?,?,?)";
+    $statement = $conn->prepare($sql);
+    $statement -> execute([$nama_produk,$harga_produk,$name,$kategori_produk]);
+    echo "<script>alert('Berhasil Menambahkan Produk');</script>";
+}
+$conn = null;
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelola Produk</title>
+    <title>Tambah Produk</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -36,7 +45,7 @@ $conn = null;
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="../css/produk.css">
+    <link rel="stylesheet" href="../css/admin.css">
 </head>
 <body>
     <!-- Navbar Start -->
@@ -66,23 +75,21 @@ $conn = null;
     </nav>
     <!-- Navbar End -->
 
-    <!-- Section Kelola Produk Start -->
-    <section class="produk">
-        <?php if(count($produk) > 0) { ?>
-            <?php foreach($produk as $row) { ?>
-                <div class="content">
-                    <img src="../images/produk/<?php echo $row['foto'] ?>" alt="foto-produk">
-                    <p class="nama-produk"><?php echo $row['nama_produk'] ?></p>
-                    <p class="harga">Rp.<?php echo $row['harga_produk'] ?></p>
-                    <a href="editProduk.php?id=<?php echo $row['id_produk']; ?>" class="btn-edit">Edit</a>
-                    <a href="hapusProduk.php?id=<?php echo $row['id_produk']; ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</a>
-                </div>
-            <?php } ?>
-        <?php } else { ?>
-            <p>Belum ada produk yang ditambahkan</p>
-        <?php } ?>
+    <!-- Tambah Produk Start -->
+    <section class="tambah-produk">
+        <form action="tambahProduk.php" method="POST" enctype="multipart/form-data">
+            <label>Nama Produk: </label>
+            <input type="text" id="nama" name="nama"><br>
+            <label>Kategori Produk: </label>
+            <input type="text" id="kategori" name="kategori"><br>
+            <label>Harga Produk: </label>
+            <input type="text" id="harga" name="harga"><br>
+            <label>Foto Produk: </label>
+            <input type="file" id="foto" name="foto"><br>
+            <input type="submit" value="Tambah">
+        </form>
     </section>
-    <!-- Section Kelola Produk End -->
+    <!-- Tambah Produk End -->
 
     <!-- Icons -->
     <script>

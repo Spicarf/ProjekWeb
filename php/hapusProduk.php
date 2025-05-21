@@ -1,6 +1,17 @@
 <?php
+session_start();
 require_once __DIR__ . "/getConnection.php";
 $conn = getConnection();
+
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "adminsayurin@gmail.com") {
+    header("Location: ../index.php");
+    exit();
+}
 
 if (isset($_GET['id'])) {
     $id = $_GET['id'];

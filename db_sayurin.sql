@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 20 Bulan Mei 2025 pada 09.04
+-- Waktu pembuatan: 21 Bulan Mei 2025 pada 17.07
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.0.30
 
@@ -24,6 +24,34 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Struktur dari tabel `komentar`
+--
+
+CREATE TABLE `komentar` (
+  `id_komentar` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  `id_produk` int(11) NOT NULL,
+  `komentar` text NOT NULL,
+  `rating` int(11) NOT NULL,
+  `tanggal` datetime NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data untuk tabel `komentar`
+--
+
+INSERT INTO `komentar` (`id_komentar`, `id_user`, `id_produk`, `komentar`, `rating`, `tanggal`) VALUES
+(1, 2, 18, 'Murah dan fresh, mantapp', 5, '2025-05-21 22:06:42'),
+(2, 2, 23, 'ada yang asem buahnya, overall enak', 4, '2025-05-21 22:07:15'),
+(3, 2, 20, 'fresh dan lebih murah dari yang saya beli di supermarket', 5, '2025-05-21 22:10:30'),
+(4, 3, 18, 'saya membuatnya menjadi kol goreng, rasanya enak. bagus sekali', 5, '2025-05-21 22:13:06'),
+(5, 3, 23, 'enak, segar, asam dan manis cocok untuk dijadikan minuman strawberry', 5, '2025-05-21 22:14:13'),
+(6, 4, 17, 'saya membuatnya jadi tumis telur dan pare, enak dan fresh saaat datang. Packagingnya aman, mantap', 5, '2025-05-21 22:16:48'),
+(7, 4, 23, 'saya sebenernya tidak terlalu suka strawberry, namun strawberry di sini enakk', 4, '2025-05-21 22:17:53');
+
+-- --------------------------------------------------------
+
+--
 -- Struktur dari tabel `produk`
 --
 
@@ -40,13 +68,14 @@ CREATE TABLE `produk` (
 --
 
 INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `foto`, `kategori`) VALUES
-(9, 'Sayur Kol', '10000', 'kol.jpg', 'sayur'),
-(10, 'Wortel', '10000', 'wortel.jpg', 'sayur'),
-(11, 'Apel', '10000', 'apel.jpg', 'buah'),
-(12, 'Brokoli', '10000', 'brokoli.jpg', 'sayur'),
-(13, 'Jeruk', '10000', 'jeruk.jpg', 'buah'),
-(14, 'Strawberry', '10000', '682977ab8af46-strawberry.jpg', 'buah'),
-(16, 'Pisang', '1000', '6829f752540cb-charlesdeluvio-0v_1TPz1uXw-unsplash.jpg', 'buah');
+(17, 'Pare', '8000', '682db20c29f74-pare.jpg', 'sayur'),
+(18, 'Sayur Kol', '6000', '682db2340c25e-kol.jpg', 'sayur'),
+(19, 'Wortel', '9500', '682db24767f75-wortel.jpg', 'sayur'),
+(20, 'Brokoli', '25000', '682db2523c5f6-brokoli.jpg', 'sayur'),
+(21, 'Apel', '19000', '682db26a7ac4f-apel.jpg', 'buah'),
+(22, 'Jeruk', '8500', '682db275b43fc-jeruk.jpg', 'buah'),
+(23, 'Strawberry', '15000', '682db2b52525e-strawberry.jpg', 'buah'),
+(24, 'Pisang', '25000', '682db2c6c6a44-pisang.jpg', 'buah');
 
 -- --------------------------------------------------------
 
@@ -57,19 +86,27 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `foto`, `kateg
 CREATE TABLE `transaksi` (
   `id_user` int(11) NOT NULL,
   `id_produk` int(11) NOT NULL,
-  `tanggal` datetime NOT NULL
+  `tanggal` datetime NOT NULL,
+  `metode` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data untuk tabel `transaksi`
 --
 
-INSERT INTO `transaksi` (`id_user`, `id_produk`, `tanggal`) VALUES
-(3, 12, '2025-05-20 14:48:27'),
-(3, 14, '2025-05-20 14:48:35'),
-(2, 11, '2025-05-20 14:58:09'),
-(2, 9, '2025-05-20 15:00:14'),
-(3, 13, '2025-05-20 15:01:37');
+INSERT INTO `transaksi` (`id_user`, `id_produk`, `tanggal`, `metode`) VALUES
+(2, 18, '2025-05-21 22:05:20', 'OVO'),
+(2, 18, '2025-05-21 22:05:32', 'DANA'),
+(2, 24, '2025-05-21 22:05:54', 'QRIS'),
+(2, 23, '2025-05-21 22:06:04', 'DANA'),
+(2, 20, '2025-05-21 22:06:12', 'QRIS'),
+(3, 18, '2025-05-21 22:11:49', 'QRIS'),
+(3, 21, '2025-05-21 22:12:04', 'QRIS'),
+(3, 20, '2025-05-21 22:12:17', 'DANA'),
+(3, 23, '2025-05-21 22:13:19', 'DANA'),
+(4, 23, '2025-05-21 22:14:48', 'QRIS'),
+(4, 22, '2025-05-21 22:14:58', 'QRIS'),
+(4, 17, '2025-05-21 22:15:06', 'DANA');
 
 -- --------------------------------------------------------
 
@@ -93,11 +130,20 @@ CREATE TABLE `user` (
 INSERT INTO `user` (`id_user`, `nama`, `email`, `username`, `password`, `profile`) VALUES
 (1, 'admin', 'adminsayurin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL),
 (2, 'Farid Nanda Syauqi', 'faridnanda26@gmail.com', 'Farid', '202cb962ac59075b964b07152d234b70', '6829f671c24d1-fotoSaya.jpg'),
-(3, 'Cindy Natasya Aulia Putri', 'cindy@gmail.com', 'Cindy', '289dff07669d7a23de0ef88d2f7129e7', NULL);
+(3, 'Cindy Natasya Aulia Putri', 'cindynatasya88@gmail.com', 'Cindy', '289dff07669d7a23de0ef88d2f7129e7', '682c417e1d1be-fotoProfile.jpg'),
+(4, 'Raffi Fatthoni', 'raffi@gmail.com', 'Raffi', 'd81f9c1be2e08964bf9f24b15f0e4900', NULL);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `komentar`
+--
+ALTER TABLE `komentar`
+  ADD PRIMARY KEY (`id_komentar`),
+  ADD KEY `id_user` (`id_user`),
+  ADD KEY `id_produk` (`id_produk`);
 
 --
 -- Indeks untuk tabel `produk`
@@ -125,20 +171,33 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `komentar`
+--
+ALTER TABLE `komentar`
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
+
+--
+-- Ketidakleluasaan untuk tabel `komentar`
+--
+ALTER TABLE `komentar`
+  ADD CONSTRAINT `komentar_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`) ON DELETE CASCADE,
+  ADD CONSTRAINT `komentar_ibfk_2` FOREIGN KEY (`id_produk`) REFERENCES `produk` (`id_produk`) ON DELETE CASCADE;
 
 --
 -- Ketidakleluasaan untuk tabel `transaksi`

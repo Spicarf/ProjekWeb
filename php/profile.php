@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit();
@@ -23,7 +24,7 @@ $user = $_SESSION['user'];
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="../css/profile1.css">
+    <link rel="stylesheet" href="../css/profile.css">
 </head>
 <body>
   <div class="container">
@@ -33,6 +34,8 @@ $user = $_SESSION['user'];
       <a href="profile.php">My Profile</a>
       <a href="pesanan.php">Riwayat Pesanan</a>
       <a href="editProfile.php">Edit Profile</a>
+      <a href="../index.php">Beranda</a>
+      <a href="logout.php">Logout</a>
     </div>
     <!-- Menu End -->
 
@@ -47,9 +50,6 @@ $user = $_SESSION['user'];
       <p><strong>Nama Lengkap:</strong> <?= htmlspecialchars($user['nama']) ?></p>
       <p><strong>Username:</strong> <?= htmlspecialchars($user['username']) ?></p>
       <p><strong>Email:</strong> <?= htmlspecialchars($user['email']) ?></p>
-      
-      <a href="logout.php" class="btn-logout">Logout</a>
-      <a href="../index.php" class="btn-home">Beranda</a>
     </div>
     <!-- My Profile End -->
   </div>

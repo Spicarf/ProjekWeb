@@ -17,7 +17,7 @@ session_start();
     <script src="https://unpkg.com/feather-icons"></script>
 
     <!-- My Style -->
-    <link rel="stylesheet" href="css/style1.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
     <!-- Navbar Start -->
@@ -54,10 +54,11 @@ session_start();
     <!-- Hero Section Start -->
     <section class="hero">
         <main class="content">
-            <h1>Mari Beli Sayur dan Buah Disini!</h1>
-            <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Enim nulla mollitia delectus aliquid? Voluptatum non voluptate, repudiandae porro error ipsam repellat delectus architecto. Odio tempora in illum? Officia, sunt a?</p>
+            <h1>Belanja Sayur & Buah Segar Kini Lebih Mudah!</h1>
+            <p>Dapatkan sayur dan buah terbaik langsung dari petani lokal. Segar, sehat, dan hemat — tanpa perlu keluar rumah! Yuk, mulai hidup sehat dari dapurmu hari ini.</p>
             <a href="php/produk.php" class="cta">Beli Sekarang</a>
         </main>
+
     </section>
     <!-- Hero Section End -->
     
@@ -105,6 +106,26 @@ session_start();
 
     </section>
     <!-- About Section End -->
+
+    <!-- footer Section Start -->
+    <footer class="footer">
+        <div class="socials">
+            <a href="https://instagram.com/faridnanda._" target="_blank">
+            <i data-feather="instagram"></i>
+            <p>@faridnanda._</p>
+            </a>
+            <a href="https://instagram.com/cindyynatasyaa" target="_blank">
+            <i data-feather="instagram"></i>
+            <p>@cindyynatasyaa</p>
+            </a>
+            <a href="https://instagram.com/raffiji" target="_blank">
+            <i data-feather="instagram"></i>
+            <p>@raffiji</p>
+            </a>
+        </div>
+        <p class="credit">Created by PT. Kelompok Ceria | &copy; 2025</p>
+    </footer>
+    <!-- footer Section end -->
 
     <!-- Icons -->
     <script>

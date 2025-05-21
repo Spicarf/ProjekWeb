@@ -4,6 +4,16 @@ require_once __DIR__ . "/getConnection.php";
 
 $conn = getConnection();
 
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
+if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "adminsayurin@gmail.com") {
+    header("Location: ../index.php");
+    exit();
+}
+
 // Pastikan ada ID produk yang dikirim via GET
 if (!isset($_GET['id'])) {
     header("Location: kelolaProduk.php");

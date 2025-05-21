@@ -3,6 +3,11 @@ session_start();
 require_once __DIR__ . "/getConnection.php";
 $conn = getConnection();
 
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
+}
+
 $sql = "SELECT * FROM produk";
 $statement = $conn -> prepare($sql);
 $statement -> execute();
@@ -69,7 +74,7 @@ $conn = null;
                     <p class="nama-produk"><?php echo $row['nama_produk'] ?></p>
                     <p class="harga">Rp.<?php echo $row['harga_produk'] ?></p>
                     <a href="detailProduk.php?id=<?php echo $row['id_produk']; ?>" class="btn-edit">Detail Produk</a>
-                    <a href="beli.php?id=<?php echo $row['id_produk']; ?>">Beli</a>
+                    <a href="transaksi.php?id_produk=<?php echo $row['id_produk']; ?>" class="beli">Beli</a>
                 </div>
             <?php } ?>
         <?php } else { ?>

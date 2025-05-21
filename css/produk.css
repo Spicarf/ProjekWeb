@@ -188,6 +188,20 @@ body {
 .produk .content a:hover {
     background-color: #c0392b; /* warna merah lebih gelap saat hover */
 }
+.produk .content .beli {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: var(--primary); /* oranye */
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+}
+.produk .content .beli:hover {
+    background-color: #388e3c;
+}
 /* Section Produk End */
 
 /* Detail Produk Start */
@@ -196,49 +210,54 @@ body {
     background-color: var(--bg);
 }
 .detail-produk-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
     background-color: #ffffff;
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     border-radius: 20px;
     padding: 40px;
     margin: auto;
     max-width: 1000px;
+}
+.detail-produk-container a {
+    color: black;
+}
+.produk-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
     align-items: center;
 }
-.detail-produk-container img {
+.produk-container img {
     width: 100%;
     max-width: 400px;
     border-radius: 15px;
     object-fit: cover;
     flex: 1 1 40%;
 }
-.detail-produk-container .content {
+.produk-container .content {
     flex: 1 1 50%;
 }
-.detail-produk-container .content h1 {
+.produk-container .content h1 {
     font-size: 36px;
     font-weight: 700;
     margin-bottom: 16px;
 }
-.detail-produk-container .content h3 {
+.produk-container .content h3 {
     font-size: 28px;
     color: var(--secondary);
     margin-bottom: 20px;
 }
-.detail-produk-container .content .stars {
+.produk-container .content .stars {
     display: flex;
     gap: 5px;
     margin-bottom: 20px;
 }
-.detail-produk-container .stars {
+.produk-container .stars {
     font-size: 40px;
     color: gold;
     margin-bottom: 20px;
     letter-spacing: 3px;
 }
-.detail-produk-container .content a {
+.produk-container .content a {
     display: inline-block;
     text-align: center;
     background-color: var(--primary);
@@ -248,8 +267,76 @@ body {
     border-radius: 10px;
     transition: background-color 0.3s ease, transform 0.2s ease;
 }
-.detail-produk-container .content a:hover {
+.produk-container .content a:hover {
     background-color: #388e3c;
     transform: scale(1.05);
 }
+.rating {
+    display: flex;
+    gap: 5px;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.rating label {
+    cursor: default;
+    transition: transform 0.2s ease;
+}
+
+.rating label:hover {
+    transform: scale(1.2);
+}
 /* Detail Produk End */
+
+/* Komentar Start */
+.detail-komentar-container {
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    padding: 40px;
+    margin: 20px auto;
+    max-width: 1000px;
+}
+.komentar-container {
+    margin-top: 10px;
+    background-color: #ededed;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+}
+.komentar-container .no-komen{
+    padding: 10px;
+}
+.akun-komen{
+    padding: 10px;
+}
+.akun-komen .profil-pemberi-komen{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.akun-komen .profil-pemberi-komen img{
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+.akun-komen .isi-komen {
+    padding-top: 10px;
+}
+.rating-komentar {
+    display: flex;
+    gap: 2px;
+    font-size: 16px;
+    margin-left: 10px;
+}
+.profil-pemberi-komen {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.profil-pemberi-komen strong {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+/* Komentar End */

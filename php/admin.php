@@ -3,20 +3,30 @@ session_start();
 require_once __DIR__ . "/getConnection.php";
 $conn = getConnection();
 
-if($_SERVER["REQUEST_METHOD"] == "POST") {
-    $nama_produk = $_POST["nama"];
-    $kategori_produk = $_POST["kategori"];
-    $harga_produk = $_POST["harga"];
-
-    $name = uniqid() . '-' . basename($_FILES["foto"]["name"]);
-    $tmp_name = $_FILES["foto"]["tmp_name"];
-    move_uploaded_file($tmp_name, "../images/produk/" . $name);
-
-    $sql = "INSERT INTO produk(nama_produk, harga_produk, foto, kategori) VALUES (?,?,?,?)";
-    $statement = $conn->prepare($sql);
-    $statement -> execute([$nama_produk,$harga_produk,$name,$kategori_produk]);
-    echo "<script>alert('Berhasil Menambahkan Produk');</script>";
+if (!isset($_SESSION['user'])) {
+    header("Location: login.php");
+    exit();
 }
+
+if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "adminsayurin@gmail.com") {
+    header("Location: ../index.php");
+    exit();
+}
+
+$sql = "SELECT transaksi.*, produk.nama_produk, produk.harga_produk, user.username 
+        FROM transaksi
+        JOIN produk ON transaksi.id_produk = produk.id_produk
+        JOIN user ON transaksi.id_user = user.id_user";
+$stmt = $conn->prepare($sql);
+$stmt->execute();
+$transaksi = $stmt->fetchAll();
+
+// Hitung total pendapatan
+$totalPendapatan = 0;
+foreach ($transaksi as $row) {
+    $totalPendapatan += $row['harga_produk'];
+}
+
 $conn = null;
 ?>
 <!DOCTYPE html>
@@ -24,7 +34,7 @@ $conn = null;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin</title>
+    <title>Dashboard Admin</title>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -48,9 +58,10 @@ $conn = null;
         </a>
 
         <div class="navbar-nav">   
-            <a href="admin.php"><i data-feather="plus"></i>Tambah Produk</a>
+            <a href="admin.php"><i data-feather="home"></i>Dashboard</a>
+            <a href="tambahProduk.php"><i data-feather="plus"></i>Tambah Produk</a>
             <a href="kelolaProduk.php"><i data-feather="settings"></i>Kelola Produk</a>
-            <a href="#"><i data-feather="users"></i>Lihat Pelanggan</a>
+            <a href="pelanggan.php"><i data-feather="users"></i>Lihat Pelanggan</a>
         </div>
 
         <?php if(!isset($_SESSION['user'])) { ?>
@@ -64,21 +75,37 @@ $conn = null;
     </nav>
     <!-- Navbar End -->
 
-    <!-- Tambah Produk Start -->
-    <section class="tambah-produk">
-        <form action="admin.php" method="POST" enctype="multipart/form-data">
-            <label>Nama Produk: </label>
-            <input type="text" id="nama" name="nama"><br>
-            <label>Kategori Produk: </label>
-            <input type="text" id="kategori" name="kategori"><br>
-            <label>Harga Produk: </label>
-            <input type="text" id="harga" name="harga"><br>
-            <label>Foto Produk: </label>
-            <input type="file" id="foto" name="foto"><br>
-            <input type="submit" value="Tambah">
-        </form>
+    <!-- Dashboard Admin End -->
+    <section class="dashboard-admin">
+        <h1>Total Pendapatan</h1>
+        <h3>Rp.<?php echo number_format($totalPendapatan, 0, ',', '.') ?></h3>
+
+        <h2>Riwayat Transaksi</h2>
+        <table border="1" cellpadding="10" cellspacing="0">
+            <thead>
+                <tr>
+                    <th>Nama User</th>
+                    <th>Nama Produk</th>
+                    <th>Harga</th>
+                    <th>Tanggal</th>
+                    <th>Metode Pembayaran</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach ($transaksi as $row) : ?>
+                    <tr>
+                        <td><?php echo htmlspecialchars($row['username']) ?></td>
+                        <td><?php echo htmlspecialchars($row['nama_produk']) ?></td>
+                        <td>Rp.<?php echo number_format($row['harga_produk'], 0, ',', '.') ?></td>
+                        <td><?php echo htmlspecialchars($row['tanggal']) ?></td>
+                        <td><?php echo htmlspecialchars($row['metode']) ?></td>
+                    </tr>
+                <?php endforeach ?>
+            </tbody>
+        </table>
     </section>
-    <!-- Tambah Produk End -->
+
+    <!-- Dashboard Admin End -->
 
     <!-- Icons -->
     <script>
