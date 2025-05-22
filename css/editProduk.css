@@ -24,6 +24,7 @@ body {
     padding: 60px 20px 40px;
 }
 
+/* Edit Produk Start */
 .edit-produk-container {
     background-color: #fff;
     padding: 30px 35px;
@@ -32,7 +33,6 @@ body {
     width: 100%;
     max-width: 540px;
 }
-
 .edit-produk-container h2 {
     margin-bottom: 25px;
     font-weight: 700;
@@ -40,7 +40,6 @@ body {
     color: var(--primary);
     text-align: center;
 }
-
 .edit-produk-container label {
     display: block;
     margin-bottom: 6px;
@@ -48,7 +47,6 @@ body {
     font-size: 15px;
     color: #333;
 }
-
 .edit-produk-container input[type="text"],
 .edit-produk-container input[type="number"],
 .edit-produk-container input[type="file"] {
@@ -60,12 +58,10 @@ body {
     font-size: 14px;
     transition: border-color 0.3s ease;
 }
-
 .edit-produk-container input:focus {
     border-color: var(--primary);
     box-shadow: 0 0 5px var(--primary);
 }
-
 .edit-produk-container img {
     display: block;
     margin: 10px 0 22px;
@@ -73,7 +69,6 @@ body {
     border-radius: 12px;
     border: 1px solid #ddd;
 }
-
 .edit-produk-container button {
     width: 100%;
     background-color: var(--primary);
@@ -85,11 +80,9 @@ body {
     cursor: pointer;
     transition: background-color 0.25s ease;
 }
-
 .edit-produk-container button:hover {
     background-color: #3b8e40;
 }
-
 .edit-produk-container .batal-btn {
     display: inline-block;
     margin-top: 15px;
@@ -105,7 +98,7 @@ body {
     transition: background-color 0.25s ease;
     text-decoration: none;
 }
-
 .edit-produk-container .batal-btn:hover {
     background-color: #e59400;
 }
+/* Edit Produk End */

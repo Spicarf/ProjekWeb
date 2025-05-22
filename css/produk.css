@@ -119,12 +119,39 @@ body {
 }
 /* Navbar End */
 
+/* Section Kategori Start */
+.kategori-filter {
+    margin-top: 110px;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.kategori-filter a {
+    text-decoration: none;
+    color: #333;
+    background-color: #e0e0e0;
+    padding: 5px 15px;
+    border-radius: 20px;
+    transition: background-color 0.3s;
+}
+.kategori-filter a:hover {
+    background-color: #ccc;
+}
+.kategori-filter a.active {
+    font-weight: bold;
+    background-color: var(--secondary);
+    color: #fff;
+}
+/* Section Kategori End */
+
 /* Section Produk Start */
 .produk {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 120px 20px 40px; /* padding atas disesuaikan agar tidak tertutup navbar */
+    padding: 10px; 
     gap: 20px;
     background-color: var(--bg);
 }
@@ -163,7 +190,7 @@ body {
     display: inline-block;
     margin-top: 10px;
     padding: 8px 16px;
-    background-color: #f39c12; /* oranye */
+    background-color: #f39c12; 
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
@@ -171,14 +198,14 @@ body {
     transition: background-color 0.3s ease;
 }
 .produk .content .btn-edit:hover {
-    background-color: #d68910; /* oranye lebih gelap */
+    background-color: #d68910; 
 }
 .produk .content a {
     display: inline-block;
     width: 50%;
     margin-top: 10px;
     padding: 8px 16px;
-    background-color: #e74c3c; /* warna merah untuk hapus */
+    background-color: #e74c3c; 
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
@@ -186,13 +213,13 @@ body {
     transition: background-color 0.3s ease;
 }
 .produk .content a:hover {
-    background-color: #c0392b; /* warna merah lebih gelap saat hover */
+    background-color: #c0392b; 
 }
 .produk .content .beli {
     display: inline-block;
     margin-top: 10px;
     padding: 8px 16px;
-    background-color: var(--primary); /* oranye */
+    background-color: var(--primary); 
     color: #ffffff;
     font-size: 14px;
     font-weight: bold;
@@ -217,8 +244,9 @@ body {
     margin: auto;
     max-width: 1000px;
 }
-.detail-produk-container a {
+.detail-produk-container .btn-back {
     color: black;
+    padding-bottom: 20px;
 }
 .produk-container {
     display: flex;
@@ -232,6 +260,7 @@ body {
     border-radius: 15px;
     object-fit: cover;
     flex: 1 1 40%;
+    background: #ccc;
 }
 .produk-container .content {
     flex: 1 1 50%;
@@ -277,12 +306,10 @@ body {
     font-size: 28px;
     margin-bottom: 20px;
 }
-
 .rating label {
     cursor: default;
     transition: transform 0.2s ease;
 }
-
 .rating label:hover {
     transform: scale(1.2);
 }

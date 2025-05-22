@@ -64,7 +64,7 @@ $conn = null;
       <input type="password" id="password" name="password" placeholder="Password" required />
     </div>
 
-    <input type="submit" value="Sign Up" class="btn-submit" />
+    <input type="submit" value="Sign In" class="btn-submit" />
     <a href="login.php" class="link-login">Already have an account? Login</a>
   </form>
   <!-- Form Sign-in End -->

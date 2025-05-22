@@ -4,7 +4,6 @@ require_once __DIR__ . "/getConnection.php";
 
 $conn = getConnection();
 
-// Pastikan user sudah login
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit();
@@ -19,7 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $username = $_POST['username'];
     $fotoLama = $user['profile'];
 
-    // Cek apakah ada foto baru diupload
     if (!empty($_FILES['profile']['name'])) {
         $namaFileBaru = uniqid() . '-' . basename($_FILES['profile']['name']);
         $targetDir = "../images/profile/";
@@ -30,7 +28,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (in_array($ext, $validExt) && $_FILES['profile']['size'] <= 2 * 1024 * 1024) {
             if (move_uploaded_file($_FILES['profile']['tmp_name'], $targetFile)) {
-                // Hapus foto lama jika bukan default
                 if ($fotoLama && file_exists($targetDir . $fotoLama) && $fotoLama !== 'default.png') {
                     unlink($targetDir . $fotoLama);
                 }
@@ -43,33 +40,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     } else {
-        $namaFileBaru = $fotoLama; // Tidak mengubah foto
+        $namaFileBaru = $fotoLama; 
     }
     
     if (isset($_POST['hapus_foto'])) {
         $fotoPath = "../images/profile/" . $user['profile'];
 
-        // Hapus file jika bukan default
         if (file_exists($fotoPath)) {
             unlink($fotoPath);
         }
 
-        // Update ke database
         $stmt = $conn->prepare("UPDATE user SET profile = ? WHERE id_user = ?");
         $stmt->execute([NULL, $userId]);
 
-        // Perbarui session
         $_SESSION['user']['profile'] = NULL;
 
         header("Location: editProfile.php");
         exit();
     }
 
-    // Update ke database
     $stmt = $conn->prepare("UPDATE user SET nama = ?, email = ?, username = ?, profile = ? WHERE id_user = ?");
     $stmt->execute([$nama, $email, $username, $namaFileBaru, $userId]);
 
-    // Perbarui session
     $_SESSION['user']['nama'] = $nama;
     $_SESSION['user']['email'] = $email;
     $_SESSION['user']['username'] = $username;
@@ -106,6 +98,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             <a href="profile.php">My Profile</a>
             <a href="pesanan.php">Riwayat Pesanan</a>
             <a href="editProfile.php">Edit Profile</a>
+            <a href="editPassword.php">Edit Password</a>
             <a href="../index.php">Beranda</a>
             <a href="logout.php">Logout</a>
         </div>

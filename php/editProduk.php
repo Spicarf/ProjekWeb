@@ -14,7 +14,6 @@ if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "a
     exit();
 }
 
-// Pastikan ada ID produk yang dikirim via GET
 if (!isset($_GET['id'])) {
     header("Location: kelolaProduk.php");
     exit();
@@ -22,7 +21,6 @@ if (!isset($_GET['id'])) {
 
 $id = $_GET['id'];
 
-// Ambil data produk dari database
 $sql = "SELECT * FROM produk WHERE id_produk = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id]);
@@ -33,22 +31,18 @@ if (!$produk) {
     exit();
 }
 
-// Jika form disubmit
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama_produk'];
     $harga = $_POST['harga_produk'];
     $kategori = $_POST['kategori'];
     $fotoLama = $produk['foto'];
 
-    // Cek apakah ada file baru yang diupload
     if ($_FILES['foto']['name']) {
         $namaFileBaru = uniqid() . '-' . basename($_FILES['foto']['name']);
         $targetDir = "../images/produk/";
         $targetFile = $targetDir . $namaFileBaru;
 
-        // Upload file
         if (move_uploaded_file($_FILES['foto']['tmp_name'], $targetFile)) {
-            // Hapus foto lama jika ada
             if (file_exists($targetDir . $fotoLama)) {
                 unlink($targetDir . $fotoLama);
             }
@@ -57,10 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             exit();
         }
     } else {
-        $namaFileBaru = $fotoLama; // Tidak mengubah foto
+        $namaFileBaru = $fotoLama;
     }
 
-    // Update data produk
     $updateSQL = "UPDATE produk SET nama_produk = ?, harga_produk = ?, kategori = ?, foto = ? WHERE id_produk = ?";
     $updateStmt = $conn->prepare($updateSQL);
     $updateStmt->execute([$nama, $harga, $kategori, $namaFileBaru, $id]);

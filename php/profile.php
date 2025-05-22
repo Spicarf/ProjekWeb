@@ -34,6 +34,7 @@ $user = $_SESSION['user'];
       <a href="profile.php">My Profile</a>
       <a href="pesanan.php">Riwayat Pesanan</a>
       <a href="editProfile.php">Edit Profile</a>
+      <a href="editPassword.php">Edit Password</a>
       <a href="../index.php">Beranda</a>
       <a href="logout.php">Logout</a>
     </div>

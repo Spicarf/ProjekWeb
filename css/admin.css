@@ -127,18 +127,15 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     border: 2px solid var(--primary);
 }
-
 .tambah-produk form {
     display: flex;
     flex-direction: column;
     gap: 15px;
 }
-
 .tambah-produk label {
     font-weight: bold;
     color: #333;
 }
-
 .tambah-produk input[type="text"],
 .tambah-produk input[type="file"] {
     padding: 10px;
@@ -147,12 +144,10 @@ body {
     border-radius: 0.5rem;
     transition: border-color 0.3s;
 }
-
 .tambah-produk input[type="text"]:focus,
 .tambah-produk input[type="file"]:focus {
     border-color: var(--primary);
 }
-
 .tambah-produk input[type="submit"] {
     padding: 10px;
     background-color: var(--primary);
@@ -163,7 +158,6 @@ body {
     cursor: pointer;
     transition: background-color 0.3s;
 }
-
 .tambah-produk input[type="submit"]:hover {
     background-color: #3e8e41;
 }
@@ -171,8 +165,8 @@ body {
 
 /* Dashboard Admin Start */
 .dashboard-admin {
-    margin-top: 120px; /* Agar tidak tertutup oleh navbar */
-    margin-bottom: 20px; /* Agar tidak tertutup oleh navbar */
+    margin-top: 120px; 
+    margin-bottom: 20px; 
     padding: 30px 40px;
     max-width: 1000px;
     margin-left: auto;
@@ -182,21 +176,18 @@ body {
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
     border: 2px solid var(--primary);
 }
-
 .dashboard-admin h1 {
     font-size: 28px;
     margin-bottom: 10px;
     color: var(--primary);
     text-align: center;
 }
-
 .dashboard-admin h3 {
     font-size: 24px;
     color: #000;
     text-align: center;
     margin-bottom: 30px;
 }
-
 .dashboard-admin h2 {
     margin-top: 40px;
     font-size: 22px;
@@ -204,30 +195,24 @@ body {
     border-bottom: 2px solid var(--primary);
     padding-bottom: 8px;
 }
-
-/* Tabel Transaksi */
 .dashboard-admin table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
-
 .dashboard-admin table th,
 .dashboard-admin table td {
     padding: 12px 15px;
     text-align: left;
     border: 1px solid #ccc;
 }
-
 .dashboard-admin table th {
     background-color: var(--primary);
     color: white;
 }
-
 .dashboard-admin table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
 .dashboard-admin table tr:hover {
     background-color: #f1f1f1;
 }
@@ -235,7 +220,7 @@ body {
 
 /* Daftar Pelanggan Start */
 .daftar-pelanggan {
-    margin-top: 120px; /* untuk memberi ruang di bawah navbar */
+    margin-top: 120px; 
     margin-bottom: 40px;
     padding: 30px 40px;
     max-width: 1000px;
@@ -246,21 +231,18 @@ body {
     border: 2px solid var(--primary);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
-
 .daftar-pelanggan h1 {
     font-size: 28px;
     color: var(--primary);
     text-align: center;
     margin-bottom: 10px;
 }
-
 .daftar-pelanggan h3 {
     font-size: 24px;
     color: #000;
     text-align: center;
     margin-bottom: 30px;
 }
-
 .daftar-pelanggan h2 {
     font-size: 22px;
     color: var(--secondary);
@@ -268,29 +250,24 @@ body {
     padding-bottom: 8px;
     margin-top: 20px;
 }
-
 .daftar-pelanggan table {
     width: 100%;
     border-collapse: collapse;
     margin-top: 20px;
 }
-
 .daftar-pelanggan table th,
 .daftar-pelanggan table td {
     padding: 12px 15px;
     text-align: left;
     border: 1px solid #ccc;
 }
-
 .daftar-pelanggan table th {
     background-color: var(--primary);
     color: white;
 }
-
 .daftar-pelanggan table tr:nth-child(even) {
     background-color: #f9f9f9;
 }
-
 .daftar-pelanggan table tr:hover {
     background-color: #f1f1f1;
 }

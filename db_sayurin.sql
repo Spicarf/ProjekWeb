@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 21 Bulan Mei 2025 pada 17.07
+-- Waktu pembuatan: 22 Bulan Mei 2025 pada 16.03
 -- Versi server: 10.4.32-MariaDB
 -- Versi PHP: 8.0.30
 
@@ -47,7 +47,9 @@ INSERT INTO `komentar` (`id_komentar`, `id_user`, `id_produk`, `komentar`, `rati
 (4, 3, 18, 'saya membuatnya menjadi kol goreng, rasanya enak. bagus sekali', 5, '2025-05-21 22:13:06'),
 (5, 3, 23, 'enak, segar, asam dan manis cocok untuk dijadikan minuman strawberry', 5, '2025-05-21 22:14:13'),
 (6, 4, 17, 'saya membuatnya jadi tumis telur dan pare, enak dan fresh saaat datang. Packagingnya aman, mantap', 5, '2025-05-21 22:16:48'),
-(7, 4, 23, 'saya sebenernya tidak terlalu suka strawberry, namun strawberry di sini enakk', 4, '2025-05-21 22:17:53');
+(7, 4, 23, 'saya sebenernya tidak terlalu suka strawberry, namun strawberry di sini enakk', 4, '2025-05-21 22:17:53'),
+(8, 5, 23, 'LETSS GOOO!!!', 5, '2025-05-22 21:30:22'),
+(9, 5, 27, 'MANTAPP BUNGG!!!!!', 5, '2025-05-22 21:52:05');
 
 -- --------------------------------------------------------
 
@@ -75,7 +77,10 @@ INSERT INTO `produk` (`id_produk`, `nama_produk`, `harga_produk`, `foto`, `kateg
 (21, 'Apel', '19000', '682db26a7ac4f-apel.jpg', 'buah'),
 (22, 'Jeruk', '8500', '682db275b43fc-jeruk.jpg', 'buah'),
 (23, 'Strawberry', '15000', '682db2b52525e-strawberry.jpg', 'buah'),
-(24, 'Pisang', '25000', '682db2c6c6a44-pisang.jpg', 'buah');
+(24, 'Pisang', '25000', '682db2c6c6a44-pisang.jpg', 'buah'),
+(25, 'Bundle Buah Small', '60000', '682f294815e32-bundle1.jpg', 'bundle'),
+(26, 'Bundle Buah Medium', '75000', '682f298ea8e94-bundle2.jpg', 'bundle'),
+(27, 'Bundle Sayur Small', '13000', '682f29c2bfcf7-bundle3.jpg', 'bundle');
 
 -- --------------------------------------------------------
 
@@ -106,7 +111,10 @@ INSERT INTO `transaksi` (`id_user`, `id_produk`, `tanggal`, `metode`) VALUES
 (3, 23, '2025-05-21 22:13:19', 'DANA'),
 (4, 23, '2025-05-21 22:14:48', 'QRIS'),
 (4, 22, '2025-05-21 22:14:58', 'QRIS'),
-(4, 17, '2025-05-21 22:15:06', 'DANA');
+(4, 17, '2025-05-21 22:15:06', 'DANA'),
+(3, 21, '2025-05-21 23:51:44', 'DANA'),
+(5, 23, '2025-05-22 21:30:03', 'DANA'),
+(5, 27, '2025-05-22 21:43:43', 'DANA');
 
 -- --------------------------------------------------------
 
@@ -129,9 +137,10 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id_user`, `nama`, `email`, `username`, `password`, `profile`) VALUES
 (1, 'admin', 'adminsayurin@gmail.com', 'admin', '21232f297a57a5a743894a0e4a801fc3', NULL),
-(2, 'Farid Nanda Syauqi', 'faridnanda26@gmail.com', 'Farid', '202cb962ac59075b964b07152d234b70', '6829f671c24d1-fotoSaya.jpg'),
-(3, 'Cindy Natasya Aulia Putri', 'cindynatasya88@gmail.com', 'Cindy', '289dff07669d7a23de0ef88d2f7129e7', '682c417e1d1be-fotoProfile.jpg'),
-(4, 'Raffi Fatthoni', 'raffi@gmail.com', 'Raffi', 'd81f9c1be2e08964bf9f24b15f0e4900', NULL);
+(2, 'Farid Nanda Syauqi', 'faridnanda26@gmail.com', 'Farid', '10fadc2981c5d4e062a690518b7f14e2', '6829f671c24d1-fotoSaya.jpg'),
+(3, 'Cindy Natasya Aulia Putri', 'cindynatasya88@gmail.com', 'Cindy', '8016e420a7541a05a43c9b2e07167c55', '682c417e1d1be-fotoProfile.jpg'),
+(4, 'Raffi Fatthoni', 'raffifatthoni493@gmail.com', 'Spica', '97d0ac566dcc40023a01934dccba99e8', '682f264d100ad-raffi.jpg'),
+(5, 'Naufal Ihsanul Islam', 'naufal@gmail.com', 'Nopalll', '029afa8b516152fa34f1b2fbe50f1eab', '682f2c5277b5e-nopal.jpg');
 
 --
 -- Indexes for dumped tables
@@ -174,19 +183,19 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT untuk tabel `komentar`
 --
 ALTER TABLE `komentar`
-  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id_komentar` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT untuk tabel `produk`
 --
 ALTER TABLE `produk`
-  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id_produk` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT untuk tabel `user`
 --
 ALTER TABLE `user`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)

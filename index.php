@@ -32,8 +32,7 @@ session_start();
         <div class="navbar-nav">   
             <a href="index.php"><i data-feather="home"></i>Home</a>
             <a href="php/produk.php"><i data-feather="shopping-cart"></i>Produk</a>
-            <a href="#"><i data-feather="users"></i>Tentang Kami</a>
-            <a href="#"><i data-feather="phone"></i>Kontak</a>
+            <a href="index.php#why"><i data-feather="users"></i>Tentang Kami</a>
         </div>
 
         <?php if(!isset($_SESSION['user'])) { ?>

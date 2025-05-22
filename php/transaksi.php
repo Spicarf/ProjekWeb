@@ -18,7 +18,6 @@ if (!$id_produk) {
     die("Produk tidak valid.");
 }
 
-// Ambil harga produk
 $stmt = $conn->prepare("SELECT harga_produk FROM produk WHERE id_produk = :id_produk");
 $stmt->execute(['id_produk' => $id_produk]);
 $produk = $stmt->fetch(PDO::FETCH_ASSOC);

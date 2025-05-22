@@ -9,15 +9,13 @@ if (!isset($_SESSION['user'])) {
     exit();
 }
 
-// Pastikan ada ID produk yang dikirim via GET
 if (!isset($_GET['id'])) {
-    header("Location: produk.php"); // fallback ke halaman produk
+    header("Location: produk.php"); 
     exit();
 }
 
 $id = $_GET['id'];
 
-// Ambil data produk dari database
 $sql = "SELECT * FROM produk WHERE id_produk = ?";
 $stmt = $conn->prepare($sql);
 $stmt->execute([$id]);
@@ -28,7 +26,6 @@ if (!$produk) {
     exit();
 }
 
-// Ambil komentar beserta data user
 $sql = "SELECT komentar.*, user.username, user.profile 
         FROM komentar 
         JOIN user ON komentar.id_user = user.id_user 
@@ -38,16 +35,13 @@ $stmt = $conn->prepare($sql);
 $stmt->execute([$id]);
 $komen = $stmt->fetchAll();
 
-// Ambil rata-rata rating produk dari komentar
 $id_produk = $produk['id_produk'];
 $stmt = $conn->prepare("SELECT AVG(rating) as avg_rating FROM komentar WHERE id_produk = :id_produk");
 $stmt->execute([':id_produk' => $id_produk]);
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-// Hitung rata-rata rating atau 0
 $average_rating = $row['avg_rating'] ? round($row['avg_rating']) : 0;
 
-// Ambil data user dari session
 $user = $_SESSION['user'];
 ?>
 
@@ -73,12 +67,12 @@ $user = $_SESSION['user'];
     <div class="container-detail-produk">
         <!-- Detail Produk Start -->
         <div class="detail-produk-container">
-            <a href="produk.php"><i data-feather="arrow-left"></i></a>
+            <a href="produk.php"><i data-feather="arrow-left" class="btn-back"></i></a>
             <div class="produk-container">
                 <img src="../images/produk/<?= htmlspecialchars($produk['foto']) ?>" alt="foto-produk">
                 <div class="content">
                     <h1><?= htmlspecialchars($produk['nama_produk']) ?></h1>
-                    <h3>Rp.<?= number_format($produk['harga_produk'], 0, ',', '.') ?></h3>
+                    <h3>Rp.<?= number_format($produk['harga_produk'], 0, ',', '.') ?>/kg</h3>
                     
                     <div class="rating">
                         <?php for ($i = 1; $i <= 5; $i++): ?>

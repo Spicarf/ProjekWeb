@@ -17,6 +17,20 @@ $sql = "SELECT * FROM produk";
 $statement = $conn -> prepare($sql);
 $statement -> execute();
 $produk = $statement->fetchAll();
+
+$stmt_kategori = $conn->query("SELECT DISTINCT kategori FROM produk WHERE kategori IS NOT NULL AND kategori != ''");
+$kategori_list = $stmt_kategori->fetchAll(PDO::FETCH_COLUMN);
+
+$selected_kategori = $_GET['kategori'] ?? 'semua';
+if ($selected_kategori === 'semua') {
+    $stmt_produk = $conn->query("SELECT * FROM produk");
+} else {
+    $stmt_produk = $conn->prepare("SELECT * FROM produk WHERE kategori = :kategori");
+    $stmt_produk->execute(['kategori' => $selected_kategori]);
+}
+$produk_list = $stmt_produk->fetchAll(PDO::FETCH_ASSOC);
+
+$user = $_SESSION['user'];
 $conn = null;
 
 ?>
@@ -65,15 +79,26 @@ $conn = null;
         <?php }  ?>
     </nav>
     <!-- Navbar End -->
+    
+    <!-- Filter Kategori Start -->
+    <nav class="kategori-filter">
+        <a href="?kategori=semua" <?= $selected_kategori === 'semua' ? 'class="active"' : '' ?>>Semua</a>
+        <?php foreach ($kategori_list as $kategori): ?>
+            <a href="?kategori=<?= urlencode($kategori) ?>" <?= $selected_kategori === $kategori ? 'class="active"' : '' ?>>
+                <?= htmlspecialchars(ucfirst($kategori)) ?>
+            </a>
+        <?php endforeach; ?>
+    </nav>
+    <!-- Filter Kategori End -->
 
-    <!-- Section Kelola Produk Start -->
+    <!-- Produk Start -->
     <section class="produk">
-        <?php if(count($produk) > 0) { ?>
-            <?php foreach($produk as $row) { ?>
+        <?php if(count($produk_list) > 0) { ?>
+            <?php foreach($produk_list as $row) { ?>
                 <div class="content">
                     <img src="../images/produk/<?php echo $row['foto'] ?>" alt="foto-produk">
                     <p class="nama-produk"><?php echo $row['nama_produk'] ?></p>
-                    <p class="harga">Rp.<?php echo $row['harga_produk'] ?></p>
+                    <p class="harga">Rp.<?php echo $row['harga_produk'] ?>/kg</p>
                     <a href="editProduk.php?id=<?php echo $row['id_produk']; ?>" class="btn-edit">Edit</a>
                     <a href="hapusProduk.php?id=<?php echo $row['id_produk']; ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</a>
                 </div>
@@ -82,7 +107,7 @@ $conn = null;
             <p>Belum ada produk yang ditambahkan</p>
         <?php } ?>
     </section>
-    <!-- Section Kelola Produk End -->
+    <!-- Produk End -->
 
     <!-- Icons -->
     <script>

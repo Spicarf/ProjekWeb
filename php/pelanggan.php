@@ -3,7 +3,6 @@ session_start();
 require_once __DIR__ . "/getConnection.php";
 $conn = getConnection();
 
-// Cek autentikasi admin
 if (!isset($_SESSION['user'])) {
     header("Location: login.php");
     exit();
@@ -14,10 +13,8 @@ if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "a
     exit();
 }
 
-// Ambil total pelanggan
 $totalPelanggan = $conn->query("SELECT COUNT(*) AS total FROM user WHERE username != 'admin'")->fetch(PDO::FETCH_ASSOC)['total'];
 
-// Ambil data pelanggan
 $statement = $conn->query("SELECT nama, username, email FROM user WHERE username != 'admin'");
 $pelanggan = $statement->fetchAll(PDO::FETCH_ASSOC);
 

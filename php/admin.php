@@ -16,12 +16,13 @@ if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "a
 $sql = "SELECT transaksi.*, produk.nama_produk, produk.harga_produk, user.username 
         FROM transaksi
         JOIN produk ON transaksi.id_produk = produk.id_produk
-        JOIN user ON transaksi.id_user = user.id_user";
+        JOIN user ON transaksi.id_user = user.id_user
+        ORDER BY transaksi.tanggal DESC";
+
 $stmt = $conn->prepare($sql);
 $stmt->execute();
 $transaksi = $stmt->fetchAll();
 
-// Hitung total pendapatan
 $totalPendapatan = 0;
 foreach ($transaksi as $row) {
     $totalPendapatan += $row['harga_produk'];
@@ -104,7 +105,6 @@ $conn = null;
             </tbody>
         </table>
     </section>
-
     <!-- Dashboard Admin End -->
 
     <!-- Icons -->
