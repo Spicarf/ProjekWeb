@@ -25,7 +25,7 @@ $transaksi = $stmt->fetchAll();
 
 $totalPendapatan = 0;
 foreach ($transaksi as $row) {
-    $totalPendapatan += $row['harga_produk'];
+    $totalPendapatan += $row['harga_produk'] * $row['jumlah_pembelian'];
 }
 
 $conn = null;
@@ -87,7 +87,8 @@ $conn = null;
                 <tr>
                     <th>Nama User</th>
                     <th>Nama Produk</th>
-                    <th>Harga</th>
+                    <th>Jumlah Pembelian</th>
+                    <th>Total Harga</th>
                     <th>Tanggal</th>
                     <th>Metode Pembayaran</th>
                 </tr>
@@ -97,7 +98,8 @@ $conn = null;
                     <tr>
                         <td><?php echo htmlspecialchars($row['username']) ?></td>
                         <td><?php echo htmlspecialchars($row['nama_produk']) ?></td>
-                        <td>Rp.<?php echo number_format($row['harga_produk'], 0, ',', '.') ?></td>
+                        <td><?php echo htmlspecialchars($row['jumlah_pembelian']) ?></td>
+                        <td>Rp.<?php echo number_format($row['harga_produk'] * $row['jumlah_pembelian'], 0, ',', '.') ?></td>
                         <td><?php echo htmlspecialchars($row['tanggal']) ?></td>
                         <td><?php echo htmlspecialchars($row['metode']) ?></td>
                     </tr>

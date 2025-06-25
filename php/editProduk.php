@@ -35,6 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nama = $_POST['nama_produk'];
     $harga = $_POST['harga_produk'];
     $kategori = $_POST['kategori'];
+    $stok = $_POST['stok'];
     $fotoLama = $produk['foto'];
 
     if ($_FILES['foto']['name']) {
@@ -54,9 +55,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $namaFileBaru = $fotoLama;
     }
 
-    $updateSQL = "UPDATE produk SET nama_produk = ?, harga_produk = ?, kategori = ?, foto = ? WHERE id_produk = ?";
+    $updateSQL = "UPDATE produk SET nama_produk = ?, harga_produk = ?, stok = ?, kategori = ?, foto = ? WHERE id_produk = ?";
     $updateStmt = $conn->prepare($updateSQL);
-    $updateStmt->execute([$nama, $harga, $kategori, $namaFileBaru, $id]);
+    $updateStmt->execute([$nama, $harga, $stok, $kategori, $namaFileBaru, $id]);
 
     header("Location: kelolaProduk.php");
     exit();
@@ -94,6 +95,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
             <label>Kategori:</label>
             <input type="text" name="kategori" value="<?php echo htmlspecialchars($produk['kategori']); ?>" required>
+
+            <label>Stok Produk:</label>
+            <input type="number" name="stok" value="<?php echo htmlspecialchars($produk['stok']); ?>" required>
 
             <label>Foto Produk Saat Ini:</label><br>
             <img src="../images/produk/<?php echo htmlspecialchars($produk['foto']); ?>" alt="foto-produk" width="150"><br><br>

@@ -99,6 +99,7 @@ $conn = null;
                     <img src="../images/produk/<?php echo $row['foto'] ?>" alt="foto-produk">
                     <p class="nama-produk"><?php echo $row['nama_produk'] ?></p>
                     <p class="harga">Rp.<?php echo $row['harga_produk'] ?>/kg</p>
+                    <p class="stok">Stok: <?php if ($row['stok'] > 0) echo $row['stok']; else echo "Habis"; ?></p>
                     <a href="editProduk.php?id=<?php echo $row['id_produk']; ?>" class="btn-edit">Edit</a>
                     <a href="hapusProduk.php?id=<?php echo $row['id_produk']; ?>" onclick="return confirm('Yakin ingin menghapus produk ini?')">Hapus</a>
                 </div>

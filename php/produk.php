@@ -84,8 +84,11 @@ $conn = null;
                 <img src="../images/produk/<?php echo $row['foto'] ?>" alt="foto-produk">
                 <p class="nama-produk"><?php echo $row['nama_produk'] ?></p>
                 <p class="harga">Rp.<?php echo $row['harga_produk'] ?>/kg</p>
+                <p class="stok">Stok: <?php if ($row['stok'] > 0) echo $row['stok']; else echo "Habis"; ?></p>
                 <a href="detailProduk.php?id=<?php echo $row['id_produk']; ?>" class="btn-edit">Detail Produk</a>
-                <a href="transaksi.php?id_produk=<?php echo $row['id_produk']; ?>" class="beli">Beli</a>
+                <a href="#" class="beli" onclick="konfirmasiBeli(<?= $row['id_produk']; ?>)">
+                    Beli
+                </a>
             </div>
         <?php } ?>
     <?php } else { ?>
@@ -97,6 +100,16 @@ $conn = null;
 <!-- Icons -->
 <script>feather.replace();</script>
 <script src="../js/script.js"></script>
-
+<div id="popup-modal" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Konfirmasi Pembelian</h2>
+            <p>Masukkan jumlah produk yang ingin dibeli:</p>
+            <input type="number" id="jumlah_pembelian" value="1" min="1" class="jumlah-input">
+            <div class="popup-buttons">
+            <button onclick="prosesBeli()" class="popup-btn confirm">Beli</button>
+            <button onclick="tutupPopup()" class="popup-btn cancel">Batal</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

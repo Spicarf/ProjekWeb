@@ -67,7 +67,7 @@ $user = $_SESSION['user'];
     <div class="container-detail-produk">
         <!-- Detail Produk Start -->
         <div class="detail-produk-container">
-            <a href="produk.php"><i data-feather="arrow-left" class="btn-back"></i></a>
+            <a href="javascript:window.history.back();"><i data-feather="arrow-left" class="btn-back"></i></a>
             <div class="produk-container">
                 <img src="../images/produk/<?= htmlspecialchars($produk['foto']) ?>" alt="foto-produk">
                 <div class="content">
@@ -84,7 +84,14 @@ $user = $_SESSION['user'];
                         <?php endfor; ?>
                     </div>
 
-                    <a href="transaksi.php?id_produk=<?= $produk['id_produk']; ?>">Beli Sekarang</a>
+                    <div class="action-group">
+                        <a href="#" class="btn-beli-sekarang" onclick="konfirmasiBeli(<?= $produk['id_produk']; ?>)">
+                            Beli Sekarang
+                        </a>
+                        <span class="stok">
+                            Stok: <?= ($produk['stok'] <= 0 || $produk['stok'] === null) ? "Habis" : htmlspecialchars($produk['stok']); ?>
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,5 +133,17 @@ $user = $_SESSION['user'];
     <script>feather.replace();</script>
     <!-- My Script -->
     <script src="../js/script.js"></script>
+
+    <div id="popup-modal" class="popup-overlay">
+        <div class="popup-content">
+            <h2>Konfirmasi Pembelian</h2>
+            <p>Masukkan jumlah produk yang ingin dibeli:</p>
+            <input type="number" id="jumlah_pembelian" value="1" min="1" class="jumlah-input">
+            <div class="popup-buttons">
+            <button onclick="prosesBeli()" class="popup-btn confirm">Beli</button>
+            <button onclick="tutupPopup()" class="popup-btn cancel">Batal</button>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

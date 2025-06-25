@@ -16,15 +16,16 @@ if ($_SESSION['user']['username'] != "admin" && $_SESSION['user']['email'] != "a
 if($_SERVER["REQUEST_METHOD"] == "POST") {
     $nama_produk = $_POST["nama"];
     $kategori_produk = $_POST["kategori"];
+    $stok = $_POST["stok"];
     $harga_produk = $_POST["harga"];
 
     $name = uniqid() . '-' . basename($_FILES["foto"]["name"]);
     $tmp_name = $_FILES["foto"]["tmp_name"];
     move_uploaded_file($tmp_name, "../images/produk/" . $name);
 
-    $sql = "INSERT INTO produk(nama_produk, harga_produk, foto, kategori) VALUES (?,?,?,?)";
+    $sql = "INSERT INTO produk(nama_produk, harga_produk, stok, foto, kategori) VALUES (?,?,?,?,?)";
     $statement = $conn->prepare($sql);
-    $statement -> execute([$nama_produk,$harga_produk,$name,$kategori_produk]);
+    $statement -> execute([$nama_produk,$harga_produk, $stok,$name,$kategori_produk]);
     echo "<script>alert('Berhasil Menambahkan Produk');</script>";
 }
 $conn = null;
@@ -84,6 +85,8 @@ $conn = null;
             <input type="text" id="kategori" name="kategori"><br>
             <label>Harga Produk: </label>
             <input type="text" id="harga" name="harga"><br>
+            <label>Stok Produk: </label>
+            <input type="text" id="stok" name="stok"><br>
             <label>Foto Produk: </label>
             <input type="file" id="foto" name="foto"><br>
             <input type="submit" value="Tambah">
